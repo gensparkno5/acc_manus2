@@ -117,7 +117,6 @@ class DynamicCalculationService:
                 'calculation_type': 'percentage',
                 'value': 3.0,  # 3%
                 'applies_to': 'sales',
-                'unit_type_filter': [],
                 'order_index': 1,
                 'description_ar': 'عمولة الشركة من المبيعات',
                 'description_en': 'Company commission from sales'
@@ -129,7 +128,6 @@ class DynamicCalculationService:
                 'calculation_type': 'percentage',
                 'value': 1.0,  # 1%
                 'applies_to': 'sales',
-                'unit_type_filter': [],
                 'order_index': 2,
                 'description_ar': 'عمولة البائع من المبيعات',
                 'description_en': 'Salesperson commission from sales'
@@ -141,7 +139,6 @@ class DynamicCalculationService:
                 'calculation_type': 'percentage',
                 'value': 0.5,  # 0.5%
                 'applies_to': 'sales',
-                'unit_type_filter': [],
                 'order_index': 3,
                 'description_ar': 'عمولة مدير المبيعات من المبيعات',
                 'description_en': 'Sales manager commission from sales'
@@ -153,7 +150,6 @@ class DynamicCalculationService:
                 'calculation_type': 'percentage',
                 'value': 14.0,  # 14%
                 'applies_to': 'sales',
-                'unit_type_filter': [],
                 'order_index': 4,
                 'description_ar': 'ضريبة القيمة المضافة 14%',
                 'description_en': 'Value Added Tax 14%'
@@ -165,7 +161,6 @@ class DynamicCalculationService:
                 'calculation_type': 'percentage',
                 'value': 5.0,  # 5%
                 'applies_to': 'sales',
-                'unit_type_filter': [],
                 'order_index': 5,
                 'description_ar': 'ضريبة المبيعات 5%',
                 'description_en': 'Sales Tax 5%'

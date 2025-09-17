@@ -43,6 +43,7 @@ const Layout = () => {
     { name: t('finishing_works'), href: '/finishing-works', icon: Hammer },
     { name: t('reports'), href: '/reports', icon: BarChart3 },
     { name: 'الطباعة والتصدير', href: '/print-export', icon: Receipt },
+    { name: 'الحسابات الديناميكية', href: '/dynamic-calculations', icon: Settings },
     { name: t('settings'), href: '/settings', icon: Settings },
     { name: t('users'), href: '/users', icon: Users },
   ];

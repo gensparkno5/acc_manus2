@@ -14,6 +14,7 @@ import Reports from './components/Reports';
 import Settings from './components/Settings';
 import Users from './components/Users';
 import PrintExport from './components/PrintExport';
+import DynamicCalculations from './components/DynamicCalculations';
 import './App.css';
 
 const ProtectedRoute = ({ children }) => {
@@ -77,6 +78,7 @@ function App() {
                 <Route path="reports" element={<Reports />} />
                 <Route path="print-export" element={<PrintExport />} />
                 <Route path="settings" element={<Settings />} />
+                <Route path="dynamic-calculations" element={<DynamicCalculations />} />
                 <Route path="users" element={<Users />} />
               </Route>
             </Routes>
