@@ -44,6 +44,7 @@ const Layout = () => {
     { name: t('reports'), href: '/reports', icon: BarChart3 },
     { name: 'الطباعة والتصدير', href: '/print-export', icon: Receipt },
     { name: 'الحسابات الديناميكية', href: '/dynamic-calculations', icon: Settings },
+    { name: 'الطباعة والتصدير المتقدمة', href: '/dynamic-print-export', icon: Receipt },
     { name: t('settings'), href: '/settings', icon: Settings },
     { name: t('users'), href: '/users', icon: Users },
   ];

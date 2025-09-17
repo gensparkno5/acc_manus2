@@ -15,6 +15,7 @@ import Settings from './components/Settings';
 import Users from './components/Users';
 import PrintExport from './components/PrintExport';
 import DynamicCalculations from './components/DynamicCalculations';
+import DynamicPrintExport from './components/DynamicPrintExport';
 import './App.css';
 
 const ProtectedRoute = ({ children }) => {
@@ -79,6 +80,7 @@ function App() {
                 <Route path="print-export" element={<PrintExport />} />
                 <Route path="settings" element={<Settings />} />
                 <Route path="dynamic-calculations" element={<DynamicCalculations />} />
+                <Route path="dynamic-print-export" element={<DynamicPrintExport />} />
                 <Route path="users" element={<Users />} />
               </Route>
             </Routes>
