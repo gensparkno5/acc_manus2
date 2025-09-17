@@ -2,6 +2,7 @@ from src.models import (
     db, User, Role, Permission, RolePermission, 
     FinancialSetting, ExpenseCategory, Template
 )
+from src.services.dynamic_calculation_service import DynamicCalculationService
 import json
 
 def initialize_default_data():
@@ -231,6 +232,9 @@ def initialize_default_data():
             content=json.dumps(invoice_template, ensure_ascii=False, indent=2)
         )
         template.save()
+    
+    # Initialize default calculation rules
+    DynamicCalculationService.initialize_default_rules()
     
     print("Default data initialized successfully!")
 

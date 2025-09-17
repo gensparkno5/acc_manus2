@@ -17,6 +17,7 @@ from src.routes.finishing_works import finishing_works_bp
 from src.routes.settings import settings_bp
 from src.routes.reports import reports_bp
 from src.routes.print_export import print_export_bp
+from src.routes.dynamic_calculations import dynamic_calculations_bp
 
 app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
@@ -38,6 +39,7 @@ app.register_blueprint(finishing_works_bp, url_prefix='/api/finishing_works')
 app.register_blueprint(settings_bp, url_prefix='/api/settings')
 app.register_blueprint(reports_bp, url_prefix='/api/reports')
 app.register_blueprint(print_export_bp, url_prefix='/api/print_export')
+app.register_blueprint(dynamic_calculations_bp, url_prefix='/api/dynamic')
 
 # Database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"

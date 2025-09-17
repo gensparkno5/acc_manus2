@@ -3,6 +3,7 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from src.models import db, Sale, Unit, User, CashierBalance, CashierTransaction
 from src.services.calculation_service import CalculationService
+from src.services.dynamic_calculation_service import DynamicCalculationService
 from src.utils.auth_utils import permission_required
 from datetime import datetime
 
@@ -45,10 +46,13 @@ def create_sale():
     except ValueError:
         return jsonify({"msg": "Invalid date or price format"}), 400
 
-    # Calculate financials
-    financials = CalculationService.calculate_sale_financials(
-        sale_price, unit.type, salesperson_id, sales_manager_id
-    )
+    # Calculate financials using dynamic calculation service
+    try:
+        calculations = DynamicCalculationService.calculate_sale_amounts(
+            sale_price, unit_id, salesperson_id, sales_manager_id
+        )
+    except Exception as e:
+        return jsonify({"msg": f"Calculation error: {str(e)}"}), 500
 
     new_sale = Sale(
         unit_id=unit_id,
@@ -57,13 +61,16 @@ def create_sale():
         sale_price=sale_price,
         salesperson_id=salesperson_id,
         sales_manager_id=sales_manager_id,
-        company_commission=financials["company_commission"],
-        salesperson_commission=financials["salesperson_commission"],
-        sales_manager_commission=financials["sales_manager_commission"],
-        total_taxes=financials["total_taxes"],
-        net_company_revenue=financials["net_company_revenue"],
+        company_commission=calculations["totals"]["company_commission"],
+        salesperson_commission=calculations["totals"]["salesperson_commission"],
+        sales_manager_commission=calculations["totals"]["sales_manager_commission"],
+        total_taxes=calculations["totals"]["total_taxes"],
+        net_company_revenue=calculations["totals"]["net_company_revenue"],
         notes=notes
     )
+    
+    # Store detailed calculation breakdown
+    new_sale.set_calculation_breakdown(calculations)
     new_sale.save()
 
     # Update unit status
